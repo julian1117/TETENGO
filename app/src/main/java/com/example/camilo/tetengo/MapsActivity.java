@@ -102,8 +102,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double longi = latLng.longitude;
 
         Intent intent = new Intent(this, NuevoPunto.class);
-        intent.putExtra("latitud",lati);
-        intent.putExtra("longitud",longi);
+        intent.putExtra("latitud", lati);
+        intent.putExtra("longitud", longi);
         startActivity(intent);
 
     }
