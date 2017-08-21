@@ -66,8 +66,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             if (partsUs[i].equals(MainActivity.nombreUsuario)) {
 
-                if(partsColor[i+1].equals("Azul")){
-                    LatLng posicionGuardar = new LatLng(Double.parseDouble(partLa[i+1]),Double.parseDouble(partsLong[i+1]));
+                if(partsColor[i].equals("Azul")){
+                    LatLng posicionGuardar = new LatLng(Double.parseDouble(partLa[i]),Double.parseDouble(partsLong[i]));
                     markerPosicion = mMap.addMarker(new MarkerOptions().position(posicionGuardar).title("Mi ubicacion").icon(BitmapDescriptorFactory
                             .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
                 }
