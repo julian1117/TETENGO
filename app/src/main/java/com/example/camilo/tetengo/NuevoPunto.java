@@ -36,6 +36,7 @@ public class NuevoPunto extends AppCompatActivity {
         latitud = datoLati.getString("latitud");
         Bundle datoLongi = getIntent().getExtras();
         longitud= datoLongi.getString("longitud");
+        //cambios maricas -_-
 
     }
 
