@@ -57,6 +57,7 @@ public class NuevoPunto extends AppCompatActivity {
     public  void registrarUbicacion (View v){
         String nombreUb = "";
         nombreUb = persistencia.getString("nombreU", " ")+", "+ nombreUbicacion.getText().toString();
+
         String descripcionUb ="";
         descripcionUb = persistencia.getString("descU", " ")+", "+ descripcionU.getText().toString();
 
@@ -67,7 +68,10 @@ public class NuevoPunto extends AppCompatActivity {
         lon = persistencia.getString("long"," ")+", "+ longitudCampo.getText();
 
         String color = "";
-        color = persistencia.getString("co"," ")+", " + colores.getSelectedItem();
+        color = persistencia.getString("co"," ")+", " + colores.getSelectedItem().toString();
+
+        String usuario = "";
+        usuario = persistencia.getString("usua"," ")+", "+ MainActivity.nombreUsuario;
 
         persistencia = getSharedPreferences("ubicaciones", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = persistencia.edit();
@@ -80,7 +84,7 @@ public class NuevoPunto extends AppCompatActivity {
 
         editor.commit();
 
-        Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Guardado"+ colores.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
     }
 
 }

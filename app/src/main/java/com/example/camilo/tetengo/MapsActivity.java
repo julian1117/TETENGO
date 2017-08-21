@@ -44,16 +44,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        persistencia = getSharedPreferences("ubicaciones",Context.MODE_PRIVATE);
+
         misUbicaciones();
     }
 
     public  void misUbicaciones(){
 
-        String usuario = persistencia.getString("ubicaciones"," ");
-        String color = persistencia.getString("ubicaciones"," ");
-        String lat = persistencia.getString("ubicaciones"," ");
-        String lon = persistencia.getString("ubicaciones"," ");
+        persistencia = getSharedPreferences("ubicaciones",Context.MODE_PRIVATE);
+
+        String usuario = persistencia.getString("nombreUsuario"," ");
+        String color = persistencia.getString("co"," ");
+        String lat = persistencia.getString("lati"," ");
+        String lon = persistencia.getString("long"," ");
 
         String[] partsUs = usuario.split(", ");
         String[] partsColor = color.split(", ");
@@ -64,8 +66,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             if (partsUs[i].equals(MainActivity.nombreUsuario)) {
 
-                if(partsColor[i].equals("Azul")){
-                    LatLng posicionGuardar = new LatLng(Double.parseDouble(partLa[i]),Double.parseDouble(partsLong[i]));
+                if(partsColor[i+1].equals("Azul")){
+                    LatLng posicionGuardar = new LatLng(Double.parseDouble(partLa[i+1]),Double.parseDouble(partsLong[i+1]));
                     markerPosicion = mMap.addMarker(new MarkerOptions().position(posicionGuardar).title("Mi ubicacion").icon(BitmapDescriptorFactory
                             .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
                 }
@@ -75,6 +77,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                   //      .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
             }
         }
+
+        Toast.makeText(this, "usuario"+ partsUs[0]+ "color" + partsColor[1], Toast.LENGTH_SHORT).show();
     }
 
 
