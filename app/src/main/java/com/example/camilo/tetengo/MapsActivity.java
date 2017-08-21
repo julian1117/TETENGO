@@ -11,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -100,6 +101,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         double lati = latLng.latitude;
         double longi = latLng.longitude;
+        //Toast.makeText(this, lati+"", Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(this, NuevoPunto.class);
         intent.putExtra("latitud", lati);

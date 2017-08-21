@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class NuevoPunto extends AppCompatActivity {
 
@@ -27,12 +28,14 @@ public class NuevoPunto extends AppCompatActivity {
         descripcionU = (EditText) findViewById(R.id.etDescripcionC);
         cargarCombo();
 
-        persistencia = getSharedPreferences("ubicaciones", Context.MODE_PRIVATE);
 
         Bundle datoLati = getIntent().getExtras();
-        latitud = datoLati.getString("latitud");
+        latitud = String.valueOf(datoLati.getDouble("latitud"));
+
         Bundle datoLongi = getIntent().getExtras();
-        longitud= datoLongi.getString("longitud");
+        longitud= String.valueOf(datoLongi.getString("longitud"));
+
+        persistencia = getSharedPreferences("ubicaciones", Context.MODE_PRIVATE);
 
     }
 
