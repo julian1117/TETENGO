@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView tcontrasena;
 
+    public static String nombreUsuario;
+
     SharedPreferences persistencia;
 
     @Override
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < partsUs.length; i++) {
             if (partsUs[i].equals(tvusuario.getText().toString()) &&
                     partsCont[i].equals(tcontrasena.getText().toString())) {
+                nombreUsuario=partsUs[i];
                 Intent intent = new Intent(this, MapsActivity.class);
                 startActivity(intent);
             }else {
