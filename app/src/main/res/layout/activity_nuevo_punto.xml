@@ -48,5 +48,6 @@
         android:id="@+id/button4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="registrarUbicacion"
         android:text="guardar" />
 </LinearLayout>

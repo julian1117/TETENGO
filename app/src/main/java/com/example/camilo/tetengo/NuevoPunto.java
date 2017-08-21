@@ -60,6 +60,22 @@ public class NuevoPunto extends AppCompatActivity {
         String descripcionUb ="";
         descripcionUb = persistencia.getString("descU", " ")+", "+ descripcionU.getText().toString();
 
+        String la ="";
+        la = persistencia.getString("lati", " ")+", "+ latitudCampo.getText();
+
+        String lon = "";
+        lon = persistencia.getString("long"," ")+", "+ longitudCampo.getText();
+
+        persistencia = getSharedPreferences("ubicaciones", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = persistencia.edit();
+        editor.putString("nombreU", nombreUb);
+        editor.putString("descU", descripcionUb);
+        editor.putString("lati", la);
+        editor.putString("long", lon);
+
+        editor.commit();
+
+        Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show();
     }
 
 }
