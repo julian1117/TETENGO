@@ -94,15 +94,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * @param latLng
      */
     public void onMapClick(LatLng latLng) {
-        //mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory
-        //        .defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+        mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
 
-        double lat = latLng.latitude;
+        double lati = latLng.latitude;
         double longi = latLng.longitude;
 
-        Intent intent = new Intent(this, MapsActivity.class);
+        Intent intent = new Intent(this, NuevoPunto.class);
         startActivity(intent);
-
 
     }
 }

@@ -29,9 +29,8 @@ public class Registro extends AppCompatActivity {
 
         persistencia = getSharedPreferences("usuarios", Context.MODE_PRIVATE);
 
-        String lis = persistencia.getString("nombre", " ");
-
-        Toast.makeText(this, lis, Toast.LENGTH_SHORT).show();
+       // String lis = persistencia.getString("nombre", " ");
+       // Toast.makeText(this, lis, Toast.LENGTH_SHORT).show();
 
 
     }
