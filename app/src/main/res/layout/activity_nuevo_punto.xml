@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.camilo.tetengo.Registro"
-    android:orientation="vertical">
+    tools:context="com.example.camilo.tetengo.NuevoPunto"
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <EditText
-        android:id="@+id/tvNombre"
+        android:id="@+id/etNombreC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -16,33 +17,22 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/tvApellido"
+        android:id="@+id/etDescripcionC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Apellido"
+        android:hint="Descripción"
         android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/tvNombreUs"
+    <Spinner
+        android:id="@+id/apColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nombre de usuario"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/tvContrasena"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPersonName" />
+        android:layout_weight="0.05" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="registrar"
-        android:text="registrar" />
+        android:text="guardar" />
 </LinearLayout>

@@ -17,24 +17,26 @@
         android:textAlignment="center" />
 
     <EditText
-        android:id="@+id/tvContrasena"
+        android:id="@+id/tvContrasenaInicio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Contraseña"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textAlignment="center" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="iniciar"
         android:text="Iniciar Sesion" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="registro"
         android:text="registrarse" />
 
     <ImageView
