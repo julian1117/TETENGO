@@ -7,4 +7,8 @@
     tools:context="com.example.camilo.tetengo.ListaLugares"
     android:orientation="vertical">
 
+    <ListView
+        android:id="@+id/listaLugares"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -101,7 +102,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double longi = latLng.longitude;
 
         Intent intent = new Intent(this, NuevoPunto.class);
+        intent.putExtra("latitud",lati);
+        intent.putExtra("longitud",longi);
         startActivity(intent);
 
+    }
+
+    public void misLugares(View v){
+        Intent intent = new Intent(this, ListaLugares.class);
+        startActivity(intent);
     }
 }

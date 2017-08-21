@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.camilo.tetengo.DetalleUbicacion"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/etNombreLugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="nombre"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etDescripcionLugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="descripcion"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etLatitudLugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="latitud"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etLongitudLugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="longitud"
+        android:inputType="textPersonName" />
+</LinearLayout>

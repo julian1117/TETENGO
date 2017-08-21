@@ -42,7 +42,8 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".NuevoPunto" />
-        <activity android:name=".ListaLugares"></activity>
+        <activity android:name=".ListaLugares" />
+        <activity android:name=".DetalleUbicacion"></activity>
     </application>
 
 </manifest>
