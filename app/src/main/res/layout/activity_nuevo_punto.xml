@@ -25,10 +25,24 @@
         android:inputType="textPersonName" />
 
     <Spinner
-        android:id="@+id/apColor"
+        android:id="@+id/spColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.05" />
+
+    <EditText
+        android:id="@+id/etLatitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etLongitud"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/button4"
