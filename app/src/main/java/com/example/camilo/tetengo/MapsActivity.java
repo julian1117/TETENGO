@@ -45,7 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         persistencia = getSharedPreferences("ubicaciones",Context.MODE_PRIVATE);
-
+        misUbicaciones();
     }
 
     public  void misUbicaciones(){
