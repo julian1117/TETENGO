@@ -28,6 +28,7 @@ public class NuevoPunto extends AppCompatActivity {
         descripcionU = (EditText) findViewById(R.id.etDescripcionC);
         cargarCombo();
 
+
         Bundle datoLati = getIntent().getExtras();
         latitud = String.valueOf(datoLati.getDouble("latitud"));
 
