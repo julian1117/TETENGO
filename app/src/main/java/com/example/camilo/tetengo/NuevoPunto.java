@@ -66,12 +66,17 @@ public class NuevoPunto extends AppCompatActivity {
         String lon = "";
         lon = persistencia.getString("long"," ")+", "+ longitudCampo.getText();
 
+        String color = "";
+        color = persistencia.getString("co"," ")+", " + colores.getSelectedItem();
+
         persistencia = getSharedPreferences("ubicaciones", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = persistencia.edit();
         editor.putString("nombreU", nombreUb);
         editor.putString("descU", descripcionUb);
         editor.putString("lati", la);
         editor.putString("long", lon);
+        editor.putString("co", color);
+        editor.putString("nombreUsuario",MainActivity.nombreUsuario);
 
         editor.commit();
 

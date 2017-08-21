@@ -3,6 +3,7 @@ package com.example.camilo.tetengo;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -32,6 +33,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker markerDocente;
     private Marker markerPosicion;
 
+    SharedPreferences persistencia;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        persistencia = getSharedPreferences("ubicaciones",Context.MODE_PRIVATE);
+
+    }
+
+    public  void misUbicaciones(){
+
+        String usuario = persistencia.getString("ubicaciones"," ");
+        String color = persistencia.getString("ubicaciones"," ");
+        String lat = persistencia.getString("ubicaciones"," ");
+        String lon = persistencia.getString("ubicaciones"," ");
+
+        String[] partsUs = usuario.split(", ");
+        String[] partsColor = color.split(", ");
+        String[] partLa = lat.split(", ");
+        String[] partsLong = lon.split(", ");
+
+        for (int i =0; i<partsUs.length;i++) {
+
+            if (partsUs[i].equals(MainActivity.nombreUsuario)) {
+
+                if(partsColor[i].equals("Azul")){
+                    LatLng posicionGuardar = new LatLng(Double.parseDouble(partLa[i]),Double.parseDouble(partsLong[i]));
+                    markerPosicion = mMap.addMarker(new MarkerOptions().position(posicionGuardar).title("Mi ubicacion").icon(BitmapDescriptorFactory
+                            .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                }
+
+              //  LatLng posicionGuardar = new LatLng(Double.parseDouble(partLa[i]),Double.parseDouble(partsLong[i]));
+                //markerPosicion = mMap.addMarker(new MarkerOptions().position(posicionGuardar).title("Mi ubicacion").icon(BitmapDescriptorFactory
+                  //      .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+            }
+        }
     }
 
 
@@ -107,6 +141,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         intent.putExtra("latitud", lati);
         intent.putExtra("longitud", longi);
         startActivity(intent);
+
+
 
     }
 
