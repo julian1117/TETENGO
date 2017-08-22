@@ -22,6 +22,8 @@ public class ListaLugares extends AppCompatActivity {
 
     SharedPreferences persistencia;
 
+    String nombres,descripciones,latitudes,longitudes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +36,24 @@ public class ListaLugares extends AppCompatActivity {
 
         String lugar1= persistencia.getString("nombreU"," ");
         String desc = persistencia.getString("descU"," ");
+        String lat = persistencia.getString("lati"," ");
+        String lon = persistencia.getString("long"," ");
 
         String[] partsLugar = lugar1.split(", ");
         String[] partsDesc = desc.split(", ");
+        String[] partLa = lat.split(", ");
+        String[] partsLong = lon.split(", ");
 
         for (int i =0; i<partsLugar.length;i++) {
             datosLugares.add(partsLugar[i] + " - " + partsDesc[i]);
+            nombres =partsLugar[i];
+            descripciones= partsDesc[i];
+            latitudes=partLa[i];
+            longitudes=partsLong[i];
+
         }
+
+
         adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datosLugares);
         listaLugares.setAdapter(adaptador);
 
@@ -49,6 +62,7 @@ public class ListaLugares extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String a = adaptador.getItem(position);
+
 
                 ir(view);
             }
@@ -59,6 +73,10 @@ public class ListaLugares extends AppCompatActivity {
 
     public void ir(View v){
         Intent intent = new Intent(this,DetalleUbicacion.class);
+        intent.putExtra("nombreU", nombres);
+        intent.putExtra("descU", descripciones);
+        intent.putExtra("lati", latitudes);
+        intent.putExtra("long", longitudes);
         startActivity(intent);
     }
 
