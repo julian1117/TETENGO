@@ -62,16 +62,16 @@ public class NuevoPunto extends AppCompatActivity {
         descripcionUb = persistencia.getString("descU", " ")+", "+ descripcionU.getText().toString();
 
         String la ="";
-        la = persistencia.getString("lati", " ")+", "+ latitudCampo.getText();
+        la = persistencia.getString("lati", "0")+", "+ latitudCampo.getText();
 
         String lon = "";
-        lon = persistencia.getString("long"," ")+", "+ longitudCampo.getText();
+        lon = persistencia.getString("long","0")+", "+ longitudCampo.getText();
 
         String color = "";
         color = persistencia.getString("co"," ")+", " + colores.getSelectedItem().toString();
 
         String usuario = "";
-        usuario = persistencia.getString("usua"," ")+", "+ MainActivity.nombreUsuario;
+        usuario = persistencia.getString("nombreUsuario"," ")+", "+ MainActivity.nombreUsuario;
 
         persistencia = getSharedPreferences("ubicaciones", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = persistencia.edit();
@@ -80,7 +80,7 @@ public class NuevoPunto extends AppCompatActivity {
         editor.putString("lati", la);
         editor.putString("long", lon);
         editor.putString("co", color);
-        editor.putString("nombreUsuario",MainActivity.nombreUsuario);
+        editor.putString("nombreUsuario",usuario);
 
         editor.commit();
 

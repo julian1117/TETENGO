@@ -24,13 +24,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener{
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
     private GoogleMap mMap;
-    private MapView mvMapa;
 
-    LatLng miPosicion;
-    private Marker markerDocente;
+    private LatLng miPosicion;
+
+    private LatLng posicion;
+
     private Marker markerPosicion;
 
     SharedPreferences persistencia;
@@ -44,43 +45,76 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
-        misUbicaciones();
     }
 
-    public  void misUbicaciones(){
+    public void misUbicaciones() {
 
-        persistencia = getSharedPreferences("ubicaciones",Context.MODE_PRIVATE);
+        persistencia = getSharedPreferences("ubicaciones", Context.MODE_PRIVATE);
 
-        String usuario = persistencia.getString("nombreUsuario"," ");
-        String color = persistencia.getString("co"," ");
-        String lat = persistencia.getString("lati"," ");
-        String lon = persistencia.getString("long"," ");
+        String usuario = persistencia.getString("nombreUsuario", " ");
+        String color = persistencia.getString("co", " ");
+        String lat = persistencia.getString("lati", " ");
+        String lon = persistencia.getString("long", " ");
+        String nombreUbi = persistencia.getString("nombreU", " ");
 
         String[] partsUs = usuario.split(", ");
         String[] partsColor = color.split(", ");
         String[] partLa = lat.split(", ");
         String[] partsLong = lon.split(", ");
+        String[] partUbi = nombreUbi.split(", ");
 
-        for (int i =0; i<partsUs.length;i++) {
+        for (int i = 1; i < partsUs.length; i++) {
 
             if (partsUs[i].equals(MainActivity.nombreUsuario)) {
 
-                if(partsColor[i].equals("Azul")){
-                    LatLng posicionGuardar = new LatLng(Double.parseDouble(partLa[i]),Double.parseDouble(partsLong[i]));
-                    markerPosicion = mMap.addMarker(new MarkerOptions().position(posicionGuardar).title("Mi ubicacion").icon(BitmapDescriptorFactory
-                            .defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-                }
+                double la = Double.parseDouble(partLa[i].toString());
+                double lo = Double.parseDouble(partsLong[i].toString());
 
-              //  LatLng posicionGuardar = new LatLng(Double.parseDouble(partLa[i]),Double.parseDouble(partsLong[i]));
-                //markerPosicion = mMap.addMarker(new MarkerOptions().position(posicionGuardar).title("Mi ubicacion").icon(BitmapDescriptorFactory
-                  //      .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                posicion = new LatLng(la, lo);
+
+                if (partsColor[i].equals("Azul")) {
+
+                    mMap.addMarker(new MarkerOptions().position(posicion).title(partUbi[i].toString())
+                            .icon(BitmapDescriptorFactory
+                                    .defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                            .anchor(0.5f, 0.5f));
+
+                } else if (partsColor[i].equals("Violeta")) {
+
+                    mMap.addMarker(new MarkerOptions().position(posicion).title(partUbi[i].toString())
+                            .icon(BitmapDescriptorFactory
+                                    .defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
+                            .anchor(0.5f, 0.5f));
+
+                }
+                else if (partsColor[i].equals("Naranja")) {
+
+                    mMap.addMarker(new MarkerOptions().position(posicion).title(partUbi[i].toString())
+                            .icon(BitmapDescriptorFactory
+                                    .defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+                            .anchor(0.5f, 0.5f));
+
+                }
+                else if (partsColor[i].equals("Rosado")) {
+
+                    mMap.addMarker(new MarkerOptions().position(posicion).title(partUbi[i].toString())
+                            .icon(BitmapDescriptorFactory
+                                    .defaultMarker(BitmapDescriptorFactory.HUE_ROSE))
+                            .anchor(0.5f, 0.5f));
+
+                }
+                else if (partsColor[i].equals("Amarillo")) {
+
+                    mMap.addMarker(new MarkerOptions().position(posicion).title(partUbi[i].toString())
+                            .icon(BitmapDescriptorFactory
+                                    .defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))
+                            .anchor(0.5f, 0.5f));
+
+                }
             }
         }
 
-        Toast.makeText(this, "usuario"+ partsUs[0]+ "color" + partsColor[1], Toast.LENGTH_SHORT).show();
     }
-
 
 
     @Override
@@ -100,7 +134,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         markerPosicion = mMap.addMarker(new MarkerOptions().position(miPosicion).title("Mi ubicacion").icon(BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(miPosicion, 15));
-
+        misUbicaciones();
         mMap.setOnMapClickListener(this);
 
     }
@@ -131,6 +165,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     /**
      * Agregar marcadores al mapa
+     *
      * @param latLng
      */
     public void onMapClick(LatLng latLng) {
@@ -147,10 +182,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
 
 
-
     }
 
-    public void misLugares(View v){
+    public void misLugares(View v) {
         Intent intent = new Intent(this, ListaLugares.class);
         startActivity(intent);
     }
