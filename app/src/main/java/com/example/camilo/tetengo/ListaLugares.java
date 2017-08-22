@@ -34,23 +34,28 @@ public class ListaLugares extends AppCompatActivity {
 
         datosLugares = new ArrayList<String>();
 
+        String usuario = persistencia.getString("nombreUsuario"," ");
         String lugar1= persistencia.getString("nombreU"," ");
         String desc = persistencia.getString("descU"," ");
         String lat = persistencia.getString("lati"," ");
         String lon = persistencia.getString("long"," ");
 
+        String[] partsUs = usuario.split(", ");
         String[] partsLugar = lugar1.split(", ");
         String[] partsDesc = desc.split(", ");
         String[] partLa = lat.split(", ");
         String[] partsLong = lon.split(", ");
 
-        for (int i =0; i<partsLugar.length;i++) {
-            datosLugares.add(partsLugar[i] + " - " + partsDesc[i]);
-            nombres =partsLugar[i];
-            descripciones= partsDesc[i];
-            latitudes=partLa[i];
-            longitudes=partsLong[i];
-
+        for (int i =1; i<partsUs.length;i++) {
+            if (partsUs[i].equals(MainActivity.nombreUsuario)) {
+            //    for (int j =0; j<partsLugar.length;j++) {
+                    datosLugares.add(partsLugar[i] + " - " + partsDesc[i]);
+                    nombres = partsLugar[i];
+                    descripciones = partsDesc[i];
+                    latitudes = partLa[i];
+                    longitudes = partsLong[i];
+              //  }
+            }
         }
 
 
